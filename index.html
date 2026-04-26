@@ -156,7 +156,7 @@
       pointer-events: none;
     }
 
-    /* ── PHONE MODAL ── */
+    /* ── MODAL 共通 ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -242,6 +242,127 @@
 
     .btn-cancel:hover { border-color: #aaa; }
 
+    /* ── MAIL MODAL ── */
+    .mail-modal-box {
+      background: var(--white);
+      padding: 40px 40px 36px;
+      max-width: 380px;
+      width: 92%;
+      text-align: left;
+      animation: modalIn 0.25s ease;
+    }
+
+    .mail-modal-box .modal-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--gray-text);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: block;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--gray-text);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid var(--gray-mid);
+      padding: 8px 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--black);
+      background: transparent;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--black);
+    }
+
+    .form-group textarea {
+      height: 80px;
+      line-height: 1.8;
+    }
+
+    .mail-modal-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn-send {
+      flex: 1;
+      padding: 14px;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-send:hover { background: #333; }
+    .btn-send:disabled { background: var(--gray-mid); cursor: not-allowed; }
+
+    /* 送信完了メッセージ */
+    .send-success {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .send-success .success-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gray-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .send-success .success-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--black);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .send-success p {
+      font-size: 14px;
+      font-weight: 300;
+      color: #333;
+      line-height: 1.9;
+    }
+
+    .send-success .btn-cancel {
+      margin-top: 24px;
+      width: 100%;
+    }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
@@ -267,6 +388,8 @@
       .bio p { font-size: 14px; }
       .contact-row { gap: 20px; }
       .icon-circle { width: 50px; height: 50px; }
+
+      .mail-modal-box { padding: 32px 28px 28px; }
     }
   </style>
 </head>
@@ -298,12 +421,12 @@
     <div class="contact-row">
 
       <!-- メール -->
-      <a class="contact-item" href="mailto:mah02154@gmail.com" aria-label="メールを送る">
+      <div class="contact-item" onclick="openMailModal()" role="button" tabindex="0" aria-label="メールを送る">
         <div class="icon-circle">
           <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
         </div>
         <span class="contact-label">Mail</span>
-      </a>
+      </div>
 
       <!-- 電話 -->
       <div class="contact-item" onclick="openPhoneModal()" role="button" tabindex="0" aria-label="電話をかける">
@@ -325,7 +448,7 @@
   </main>
 
   <!-- 電話モーダル -->
-  <div class="modal-overlay" id="phoneModal" onclick="closeOnOverlay(event)">
+  <div class="modal-overlay" id="phoneModal" onclick="closeOnOverlay(event, 'phoneModal')">
     <div class="modal-box">
       <p class="modal-label">Tel</p>
       <div class="phone-number">080-3459-5131</div>
@@ -336,18 +459,118 @@
     </div>
   </div>
 
+  <!-- メールモーダル -->
+  <div class="modal-overlay" id="mailModal" onclick="closeOnOverlay(event, 'mailModal')">
+    <div class="mail-modal-box">
+      <span class="modal-label">Mail</span>
+
+      <!-- フォーム -->
+      <div id="mailFormArea">
+        <div class="form-group">
+          <label>お名前</label>
+          <input type="text" id="senderName" placeholder="山田 太郎" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label>メールアドレス</label>
+          <input type="email" id="senderEmail" placeholder="example@email.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label>メッセージ</label>
+          <textarea id="senderMessage" placeholder="お問い合わせ内容をご記入ください"></textarea>
+        </div>
+        <div class="mail-modal-buttons">
+          <button class="btn-cancel" onclick="closeMailModal()">キャンセル</button>
+          <button class="btn-send" id="sendBtn" onclick="sendMail()">送信する</button>
+        </div>
+      </div>
+
+      <!-- 送信完了 -->
+      <div id="mailSuccessArea" class="send-success" style="display:none;">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>メッセージを送信しました。<br>折り返しご連絡いたします。</p>
+        <button class="btn-cancel" onclick="closeMailModal()">閉じる</button>
+      </div>
+
+    </div>
+  </div>
+
   <script>
+    // ── 電話モーダル ──
     function openPhoneModal() {
       document.getElementById('phoneModal').classList.add('open');
     }
     function closePhoneModal() {
       document.getElementById('phoneModal').classList.remove('open');
     }
-    function closeOnOverlay(e) {
-      if (e.target === document.getElementById('phoneModal')) closePhoneModal();
+
+    // ── メールモーダル ──
+    function openMailModal() {
+      // フォームをリセット
+      document.getElementById('senderName').value = '';
+      document.getElementById('senderEmail').value = '';
+      document.getElementById('senderMessage').value = '';
+      document.getElementById('mailFormArea').style.display = 'block';
+      document.getElementById('mailSuccessArea').style.display = 'none';
+      document.getElementById('sendBtn').disabled = false;
+      document.getElementById('mailModal').classList.add('open');
     }
+    function closeMailModal() {
+      document.getElementById('mailModal').classList.remove('open');
+    }
+
+    // ── 送信処理（Formspree） ──
+    async function sendMail() {
+      const name    = document.getElementById('senderName').value.trim();
+      const email   = document.getElementById('senderEmail').value.trim();
+      const message = document.getElementById('senderMessage').value.trim();
+
+      if (!name || !email || !message) {
+        alert('すべての項目をご入力ください。');
+        return;
+      }
+
+      const btn = document.getElementById('sendBtn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+
+      try {
+        const res = await fetch('https://formspree.io/f/xdayjpjw', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+
+        if (res.ok) {
+          document.getElementById('mailFormArea').style.display = 'none';
+          document.getElementById('mailSuccessArea').style.display = 'block';
+        } else {
+          alert('送信に失敗しました。しばらく経ってから再度お試しください。');
+          btn.disabled = false;
+          btn.textContent = '送信する';
+        }
+      } catch (e) {
+        alert('通信エラーが発生しました。ネットワークをご確認ください。');
+        btn.disabled = false;
+        btn.textContent = '送信する';
+      }
+    }
+
+    // ── オーバーレイクリックで閉じる ──
+    function closeOnOverlay(e, id) {
+      if (e.target === document.getElementById(id)) {
+        if (id === 'phoneModal') closePhoneModal();
+        if (id === 'mailModal') closeMailModal();
+      }
+    }
+
+    // ── ESCキーで閉じる ──
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closePhoneModal();
+      if (e.key === 'Escape') {
+        closePhoneModal();
+        closeMailModal();
+      }
     });
   </script>
 
