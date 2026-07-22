@@ -1,0 +1,705 @@
+<!-- ============================================================
+  Office Hayashi「料金のめやす」セクション
+  既存サイトの料金ページに埋め込む用のHTMLです。
+
+  想定ファイル構成
+  ├─ pricing.html               このセクションを設置するページ
+  ├─ portfolio.html             作成事例ページ
+  └─ mail-modal-form.html       メールモーダル本体
+
+  ※「作成事例を見る」のリンク先を変更する場合は
+    href="portfolio.html" を書き換えてください。
+============================================================ -->
+
+<section class="oh-pricing" aria-labelledby="ohPricingTitle">
+  <style>
+    .oh-pricing {
+      --oh-bg: #ffffff;
+      --oh-cream: #faf6f0;
+      --oh-main: #db6e33;
+      --oh-main-dark: #b95721;
+      --oh-main-soft: #f3dfc9;
+      --oh-analysis: #b55a13;
+      --oh-analysis-soft: #f5e3d2;
+      --oh-web: #8a6f5c;
+      --oh-web-soft: #e7dcd2;
+      --oh-free: #5f806d;
+      --oh-free-soft: #e2ece4;
+      --oh-text: #3a2e27;
+      --oh-text-soft: #6b5d53;
+      --oh-line: #e9e0d6;
+      --oh-white: #ffffff;
+
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 4rem;
+      color: var(--oh-text);
+      background: var(--oh-bg);
+      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      box-sizing: border-box;
+    }
+
+    .oh-pricing *,
+    .oh-pricing *::before,
+    .oh-pricing *::after {
+      box-sizing: border-box;
+    }
+
+    .oh-pricing__eyebrow {
+      margin: 0 0 0.35rem;
+      color: var(--oh-text-soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+    }
+
+    .oh-pricing__title {
+      margin: 0 0 0.7rem;
+      font-size: clamp(1.75rem, 5vw, 2.1rem);
+      line-height: 1.35;
+    }
+
+    .oh-pricing__lead {
+      margin: 0;
+      color: var(--oh-text-soft);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .oh-pricing__tax {
+      display: inline-block;
+      margin-top: 0.85rem;
+      padding: 0.24rem 0.65rem;
+      border: 1px solid var(--oh-line);
+      border-radius: 999px;
+      color: var(--oh-text-soft);
+      background: var(--oh-white);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .oh-pricing-nav {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin: 1.8rem 0 2.3rem;
+    }
+
+    .oh-pricing-nav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.65rem 0.5rem;
+      border: 1px solid var(--oh-line);
+      border-radius: 8px;
+      color: var(--oh-text);
+      background: var(--oh-white);
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .oh-pricing-nav a:hover {
+      border-color: var(--oh-main);
+      color: var(--oh-main-dark);
+    }
+
+    .oh-portfolio-link {
+      margin: 0.75rem 0 0;
+      text-align: center;
+    }
+
+    .oh-portfolio-link a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid var(--oh-main);
+      border-radius: 999px;
+      color: var(--oh-main-dark);
+      background: var(--oh-white);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .oh-portfolio-link a:hover {
+      color: var(--oh-white);
+      background: var(--oh-main);
+    }
+
+    .oh-group {
+      scroll-margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .oh-group__header {
+      margin-bottom: 0.95rem;
+    }
+
+    .oh-group__label {
+      display: inline-block;
+      margin-bottom: 0.55rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .oh-group__title {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1.45;
+    }
+
+    .oh-group__title-image {
+      display: block;
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+    }
+
+    .oh-group__intro {
+      margin: 0.45rem 0 0;
+      color: var(--oh-text-soft);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+
+    .oh-group--free .oh-group__label {
+      color: var(--oh-free);
+      background: var(--oh-free-soft);
+    }
+
+    .oh-group--make .oh-group__label {
+      color: var(--oh-main);
+      background: var(--oh-main-soft);
+    }
+
+    .oh-group--analysis .oh-group__label {
+      color: var(--oh-analysis);
+      background: var(--oh-analysis-soft);
+    }
+
+    .oh-group--web .oh-group__label {
+      color: var(--oh-web);
+      background: var(--oh-web-soft);
+    }
+
+    .oh-card-list {
+      border-top: 1px solid var(--oh-line);
+    }
+
+    .oh-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1.2rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--oh-line);
+    }
+
+    .oh-card__name {
+      margin: 0 0 0.32rem;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .oh-card__desc {
+      margin: 0;
+      color: var(--oh-text-soft);
+      font-size: 0.85rem;
+      line-height: 1.75;
+    }
+
+    .oh-card__includes {
+      margin: 0.55rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--oh-text-soft);
+      font-size: 0.8rem;
+      line-height: 1.75;
+    }
+
+    .oh-card__price {
+      min-width: 7.7rem;
+      color: var(--oh-text);
+      text-align: right;
+      font-size: 1rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .oh-card__price small {
+      display: block;
+      margin-top: 0.15rem;
+      color: var(--oh-text-soft);
+      font-size: 0.7rem;
+      font-weight: 400;
+      white-space: normal;
+    }
+
+    .oh-group--free .oh-card__price {
+      color: var(--oh-free);
+    }
+
+    .oh-group--make .oh-card__price {
+      color: var(--oh-main);
+    }
+
+    .oh-group--analysis .oh-card__price {
+      color: var(--oh-analysis);
+    }
+
+    .oh-group--web .oh-card__price {
+      color: var(--oh-web);
+    }
+
+    .oh-section-cta {
+      margin-top: 1.15rem;
+      text-align: center;
+    }
+
+    .oh-cta-button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.75rem 1.45rem;
+      border: 0;
+      border-radius: 999px;
+      color: var(--oh-white);
+      background: var(--oh-main);
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .oh-cta-button:hover {
+      background: var(--oh-main-dark);
+    }
+
+    .oh-note {
+      margin-top: 0.5rem;
+      padding: 1.2rem;
+      border: 1px solid var(--oh-line);
+      border-radius: 10px;
+      color: var(--oh-text-soft);
+      background: var(--oh-cream);
+      font-size: 0.84rem;
+      line-height: 1.85;
+    }
+
+    .oh-note strong {
+      color: var(--oh-text);
+    }
+
+    .oh-note ul {
+      margin: 0.55rem 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .oh-final-cta {
+      margin-top: 2rem;
+      padding: 1.6rem 1.1rem;
+      border-radius: 12px;
+      background: var(--oh-cream);
+      text-align: center;
+    }
+
+    .oh-final-cta__title {
+      margin: 0 0 0.45rem;
+      font-size: 1.15rem;
+    }
+
+    .oh-final-cta__text {
+      margin: 0 0 1rem;
+      color: var(--oh-text-soft);
+      font-size: 0.86rem;
+      line-height: 1.75;
+    }
+
+    .oh-pricing a:focus-visible,
+    .oh-cta-button:focus-visible {
+      outline: 3px solid rgba(219, 110, 51, 0.28);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 560px) {
+      .oh-pricing {
+        padding: 2.4rem 1rem 3.5rem;
+      }
+
+      .oh-card {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+      }
+
+      .oh-card__price {
+        min-width: 0;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .oh-pricing-nav {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <p class="oh-pricing__eyebrow">PRICE</p>
+  <h1 class="oh-pricing__title" id="ohPricingTitle">料金のめやす</h1>
+  <p class="oh-pricing__lead">
+    料金は、制作内容・掲載量・写真の有無・店舗数などによって変わります。
+    下記は一般的なご依頼の目安です。ご相談後、作業を始める前に正式なお見積りをご案内します。
+  </p>
+  <span class="oh-pricing__tax">表示価格は税込です</span>
+
+  <nav class="oh-pricing-nav" aria-label="料金メニュー">
+    <a href="#hearing">無料ヒアリング</a>
+    <a href="#pop-menu">POP・メニュー作成</a>
+    <a href="#analysis">数値分析</a>
+    <a href="#web-support">ウェブ対策</a>
+  </nav>
+
+  <!-- 無料ヒアリング -->
+  <section class="oh-group oh-group--free" id="hearing" aria-labelledby="hearingTitle">
+    <header class="oh-group__header">
+      <span class="oh-group__label">まずはここから</span>
+      <h2 class="oh-group__title" id="hearingTitle">無料ヒアリング</h2>
+      <p class="oh-group__intro">
+        相談内容が固まっていなくても構いません。現在のお悩みや、売りたい商品、困っていることをお伺いします。
+      </p>
+    </header>
+
+    <div class="oh-card-list">
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">初回相談・現状確認</h3>
+          <p class="oh-card__desc">
+            30分～1時間程度を目安に、店舗の状況やご希望をお伺いし、どのような改善が考えられるかを整理します。
+          </p>
+          <ul class="oh-card__includes">
+            <li>現在のお悩みの聞き取り</li>
+            <li>改善の方向性の簡易整理</li>
+            <li>必要な作業内容と概算費用のご案内</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          無料
+          <small>初回30分～1時間程度</small>
+        </div>
+      </article>
+    </div>
+
+    <div class="oh-section-cta">
+      <button
+        type="button"
+        class="oh-cta-button"
+        data-inquiry="無料ヒアリングについて相談したいです。"
+        onclick="openMailModal(this.dataset.inquiry)">
+        無料ヒアリングを申し込む
+      </button>
+    </div>
+  </section>
+
+  <!-- POP・メニュー作成 -->
+  <section class="oh-group oh-group--make" id="pop-menu" aria-labelledby="popMenuTitle">
+    <header class="oh-group__header">
+      <span class="oh-group__label">店内・店頭の販促物</span>
+      <h2 class="oh-group__title" id="popMenuTitle">
+        <img
+          class="oh-group__title-image"
+          src="menu-pop.png"
+          width="850"
+          height="292"
+          alt="POP・メニュー作成">
+      </h2>
+      <p class="oh-group__intro">
+        単に見栄えを整えるだけでなく、誰に何を伝え、何を選んでもらうかを整理して制作します。
+      </p>
+    </header>
+
+    <div class="oh-card-list">
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">店内POP・単品訴求POP</h3>
+          <p class="oh-card__desc">
+            卓上、壁面、レジ横などに設置するA4程度の販促物です。おすすめ商品や季節商品の訴求に向いています。
+          </p>
+          <ul class="oh-card__includes">
+            <li>構成提案・文字原稿の整理</li>
+            <li>写真1点程度の補正</li>
+            <li>修正1回</li>
+            <li>印刷用PDF納品（基本）</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          8,000円〜
+          <small>1点・参考価格</small>
+        </div>
+      </article>
+
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">店頭POP・誘導サイン</h3>
+          <p class="oh-card__desc">
+            店外からの視認性を意識したA3〜A1程度のサインです。通行客に短時間で内容が伝わる構成をご提案します。
+          </p>
+          <ul class="oh-card__includes">
+            <li>掲示場所を踏まえた情報整理</li>
+            <li>構成・デザイン制作</li>
+            <li>修正1回</li>
+            <li>印刷用PDF納品（基本）</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          20,000円〜
+          <small>1点・参考価格</small>
+        </div>
+      </article>
+
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">チラシ・ポスター制作</h3>
+          <p class="oh-card__desc">
+            商品案内、イベント、宴会告知など、複数の情報を整理して一枚にまとめます。
+          </p>
+          <ul class="oh-card__includes">
+            <li>構成提案・文字原稿の整理</li>
+            <li>写真補正</li>
+            <li>修正1回</li>
+            <li>印刷用PDF納品（基本）</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          20,000円〜
+          <small>1点・参考価格</small>
+        </div>
+      </article>
+
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">メニューブック制作</h3>
+          <p class="oh-card__desc">
+            売りたい商品が自然に目に入り、選ばれやすくなるように、掲載順・視線誘導・価格表示を整理します。
+          </p>
+          <ul class="oh-card__includes">
+            <li>表紙を含む4ページ程度を想定</li>
+            <li>掲載内容の整理とレイアウト提案</li>
+            <li>写真補正</li>
+            <li>修正1回</li>
+            <li>印刷用PDF納品（基本）</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          50,000円〜
+          <small>4ページ程度・参考価格</small>
+        </div>
+      </article>
+    </div>
+
+    <div class="oh-note">
+      印刷費、写真撮影、有料素材、複数回の修正、現地取付、交通費は別途となる場合があります。
+    </div>
+
+    <div class="oh-section-cta">
+      <button
+        type="button"
+        class="oh-cta-button"
+        data-inquiry="POP・メニュー作成について相談したいです。"
+        onclick="openMailModal(this.dataset.inquiry)">
+        POP・メニュー作成について相談する
+      </button>
+    </div>
+
+    <div class="oh-portfolio-link">
+      <a href="portfolio.html">作成事例を見る</a>
+    </div>
+  </section>
+
+  <!-- 数値分析 -->
+  <section class="oh-group oh-group--analysis" id="analysis" aria-labelledby="analysisTitle">
+    <header class="oh-group__header">
+      <span class="oh-group__label">売上と利益の見える化</span>
+      <h2 class="oh-group__title" id="analysisTitle">
+        <img
+          class="oh-group__title-image"
+          src="menu-analysis.png"
+          width="850"
+          height="292"
+          alt="数値分析">
+      </h2>
+      <p class="oh-group__intro">
+        レジデータや原価情報を整理し、どの商品が売上と利益に貢献しているか、改善余地がどこにあるかを確認します。
+      </p>
+    </header>
+
+    <div class="oh-card-list">
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">売上・粗利の簡易分析</h3>
+          <p class="oh-card__desc">
+            商品別の売上、出数、原価、粗利を一覧化し、売れている商品と利益が残る商品の違いを見えるようにします。
+          </p>
+          <ul class="oh-card__includes">
+            <li>レジデータ・原価情報の整理</li>
+            <li>商品別売上・出数・粗利の一覧化</li>
+            <li>改善候補商品の簡易コメント</li>
+            <li>PDFまたはExcel形式での納品</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          20,000円〜
+          <small>1店舗・1か月分を目安</small>
+        </div>
+      </article>
+
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">複数月・複数店舗の比較分析</h3>
+          <p class="oh-card__desc">
+            月ごとの変化や店舗ごとの差を比較し、改善効果や店舗特性を確認できる資料にまとめます。
+          </p>
+          <ul class="oh-card__includes">
+            <li>月別・店舗別の比較表作成</li>
+            <li>主要指標の推移整理</li>
+            <li>改善候補の整理</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          お見積り
+          <small>期間・店舗数により変動</small>
+        </div>
+      </article>
+    </div>
+
+    <div class="oh-note">
+      <strong>売上・原価データのご提示は任意です。</strong>
+      分析に必要な範囲のみお預かりし、第三者へ提供しません。
+      お預かり方法や保存期間については、作業開始前に確認します。
+    </div>
+
+    <div class="oh-section-cta">
+      <button
+        type="button"
+        class="oh-cta-button"
+        data-inquiry="数値分析について相談したいです。"
+        onclick="openMailModal(this.dataset.inquiry)">
+        数値分析について相談する
+      </button>
+    </div>
+  </section>
+
+  <!-- ウェブ対策 -->
+  <section class="oh-group oh-group--web" id="web-support" aria-labelledby="webSupportTitle">
+    <header class="oh-group__header">
+      <span class="oh-group__label">Googleマップ・店舗情報の整備</span>
+      <h2 class="oh-group__title" id="webSupportTitle">
+        <img
+          class="oh-group__title-image"
+          src="menu-web.png"
+          width="850"
+          height="292"
+          alt="ウェブ対策">
+      </h2>
+      <p class="oh-group__intro">
+        Googleビジネスプロフィールや店舗情報の更新を中心に、来店前のお客様が迷わず情報を確認できる状態を整えます。
+      </p>
+    </header>
+
+    <div class="oh-card-list">
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">Googleビジネスプロフィール初期整備</h3>
+          <p class="oh-card__desc">
+            営業時間、所在地、電話番号、写真、説明文などの基本情報を確認し、必要な修正項目を整理します。
+          </p>
+          <ul class="oh-card__includes">
+            <li>基本情報の確認と修正</li>
+            <li>店舗説明文の整理</li>
+            <li>写真掲載内容の確認</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          15,000円〜
+          <small>1店舗・参考価格</small>
+        </div>
+      </article>
+
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">月次サポート</h3>
+          <p class="oh-card__desc">
+            Googleビジネスプロフィールを中心に、営業時間変更やお知らせなど、店舗情報の更新を継続して行います。
+          </p>
+          <ul class="oh-card__includes">
+            <li>月2回までの投稿更新</li>
+            <li>営業時間・店舗情報の修正</li>
+            <li>月1回の簡易確認</li>
+          </ul>
+        </div>
+        <div class="oh-card__price">
+          月額15,000円〜
+          <small>1店舗・参考価格</small>
+        </div>
+      </article>
+
+      <article class="oh-card">
+        <div>
+          <h3 class="oh-card__name">既存のお客様向けスポット対応</h3>
+          <p class="oh-card__desc">
+            納品済みデータの修正や、店舗運営に関わるパソコン・データ管理上の軽微なご相談に対応します。
+          </p>
+        </div>
+        <div class="oh-card__price">
+          5,000円〜
+          <small>内容によりお見積り</small>
+        </div>
+      </article>
+    </div>
+
+    <div class="oh-section-cta">
+      <button
+        type="button"
+        class="oh-cta-button"
+        data-inquiry="ウェブ対策について相談したいです。"
+        onclick="openMailModal(this.dataset.inquiry)">
+        ウェブ対策について相談する
+      </button>
+    </div>
+  </section>
+
+  <div class="oh-note">
+    <strong>料金について</strong>
+    <ul>
+      <li>上記は一般的な内容を想定した参考価格です。</li>
+      <li>作業内容と金額をご確認いただいた後に着手します。</li>
+      <li>お見積りまでは無料です。</li>
+      <li>キャンセル条件とお支払い時期は、正式なお見積り時にご案内します。</li>
+    </ul>
+  </div>
+
+  <div class="oh-final-cta">
+    <h2 class="oh-final-cta__title">内容が決まっていなくても大丈夫です</h2>
+    <p class="oh-final-cta__text">
+      「おすすめ商品をもっと売りたい」「何から直せばよいか分からない」という段階からお伺いします。
+    </p>
+    <button
+      type="button"
+      class="oh-cta-button"
+      data-inquiry="一度相談したいです。"
+      onclick="openMailModal(this.dataset.inquiry)">
+      まずは無料で相談してみる
+    </button>
+  </div>
+</section>
