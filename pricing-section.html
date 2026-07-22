@@ -1,3 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <title>料金のめやす｜Office Hayashi</title>
+  <style>
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
 <!-- ============================================================
   Office Hayashi「料金のめやす」セクション
   既存サイトの料金ページに埋め込む用のHTMLです。
@@ -354,6 +379,160 @@
         grid-template-columns: 1fr;
       }
     }
+  
+    /* スマートフォン表示用：Yahooニュース程度の可読性を目安に調整 */
+    @media (max-width: 560px) {
+      .oh-pricing {
+        padding: 2rem 1.15rem 3.5rem;
+        font-size: 18px;
+      }
+
+      .oh-pricing__eyebrow {
+        font-size: 13px;
+      }
+
+      .oh-pricing__title {
+        font-size: 30px;
+        line-height: 1.35;
+      }
+
+      .oh-pricing__lead {
+        font-size: 18px;
+        line-height: 1.85;
+      }
+
+      .oh-pricing__tax {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .oh-pricing-nav {
+        gap: 0.65rem;
+        margin-top: 1.65rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .oh-pricing-nav a {
+        min-height: 52px;
+        padding: 0.8rem 0.55rem;
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      .oh-group {
+        margin-bottom: 3.4rem;
+      }
+
+      .oh-group__header {
+        margin-bottom: 1.15rem;
+      }
+
+      .oh-group__label {
+        margin-bottom: 0.65rem;
+        padding: 0.34rem 0.8rem;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .oh-group__title {
+        font-size: 26px;
+        line-height: 1.4;
+      }
+
+      .oh-group__title-image {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        border-radius: 12px;
+      }
+
+      .oh-group__intro {
+        margin-top: 0.75rem;
+        font-size: 18px;
+        line-height: 1.85;
+      }
+
+      .oh-card {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        padding: 1.45rem 0;
+      }
+
+      .oh-card__name {
+        margin-bottom: 0.5rem;
+        font-size: 21px;
+        line-height: 1.55;
+      }
+
+      .oh-card__desc {
+        font-size: 18px;
+        line-height: 1.85;
+      }
+
+      .oh-card__includes {
+        margin-top: 0.75rem;
+        padding-left: 1.35rem;
+        font-size: 17px;
+        line-height: 1.85;
+      }
+
+      .oh-card__includes li + li {
+        margin-top: 0.2rem;
+      }
+
+      .oh-card__price {
+        min-width: 0;
+        text-align: left;
+        font-size: 21px;
+        line-height: 1.5;
+      }
+
+      .oh-card__price small {
+        margin-top: 0.2rem;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .oh-section-cta {
+        margin-top: 1.4rem;
+      }
+
+      .oh-cta-button {
+        min-height: 52px;
+        padding: 0.9rem 1.45rem;
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      .oh-portfolio-link a {
+        min-height: 52px;
+        padding: 0.9rem 1.4rem;
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      .oh-note {
+        padding: 1.15rem;
+        font-size: 16px;
+        line-height: 1.85;
+      }
+
+      .oh-final-cta {
+        margin-top: 2.2rem;
+        padding: 1.5rem 1rem;
+      }
+
+      .oh-final-cta__title {
+        font-size: 22px;
+        line-height: 1.5;
+      }
+
+      .oh-final-cta__text {
+        font-size: 18px;
+        line-height: 1.8;
+      }
+    }
+
   </style>
 
   <p class="oh-pricing__eyebrow">PRICE</p>
@@ -703,3 +882,6 @@
     </button>
   </div>
 </section>
+
+</body>
+</html>
