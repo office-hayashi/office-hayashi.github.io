@@ -566,6 +566,47 @@
       }
     }
 
+
+    .oh-card__portfolio {
+      grid-column: 1 / -1;
+      margin-top: 0.35rem;
+    }
+
+    .oh-card__portfolio a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.65rem 1.2rem;
+      border: 2px solid var(--oh-main);
+      border-radius: 999px;
+      color: var(--oh-main-dark);
+      background: var(--oh-white);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .oh-card__portfolio a:hover {
+      color: var(--oh-white);
+      background: var(--oh-main);
+    }
+
+    @media (max-width: 560px) {
+      .oh-card__portfolio {
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .oh-card__portfolio a {
+        width: 100%;
+        min-height: 48px;
+        padding: 0.8rem 1rem;
+        font-size: 16px;
+      }
+    }
+
 </style>
 
   <p class="oh-pricing__eyebrow">PRICE</p>
@@ -659,6 +700,9 @@
           8,000円〜
           <small>1点・参考価格</small>
         </div>
+        <div class="oh-card__portfolio">
+          <a href="portfolio.html">作成事例を見る</a>
+        </div>
       </article>
 
       <article class="oh-card">
@@ -678,6 +722,9 @@
           20,000円〜
           <small>1点・参考価格</small>
         </div>
+        <div class="oh-card__portfolio">
+          <a href="portfolio.html">作成事例を見る</a>
+        </div>
       </article>
 
       <article class="oh-card">
@@ -696,6 +743,9 @@
         <div class="oh-card__price">
           20,000円〜
           <small>1点・参考価格</small>
+        </div>
+        <div class="oh-card__portfolio">
+          <a href="portfolio.html">作成事例を見る</a>
         </div>
       </article>
 
@@ -717,6 +767,9 @@
           50,000円〜
           <small>4ページ程度・参考価格</small>
         </div>
+        <div class="oh-card__portfolio">
+          <a href="portfolio.html">作成事例を見る</a>
+        </div>
       </article>
     </div>
 
@@ -732,10 +785,6 @@
         onclick="openMailModal(this.dataset.inquiry)">
         POP・メニュー作成について相談する
       </button>
-    </div>
-
-    <div class="oh-portfolio-link">
-      <a href="portfolio.html">作成事例を見る</a>
     </div>
   </section>
 
