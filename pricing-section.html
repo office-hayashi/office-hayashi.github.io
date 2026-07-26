@@ -91,47 +91,6 @@
       line-height: 1.9;
     }
 
-    .oh-pricing__tax {
-      display: inline-block;
-      margin-top: 0.85rem;
-      padding: 0.24rem 0.65rem;
-      border: 1px solid var(--oh-line);
-      border-radius: 999px;
-      color: var(--oh-text-soft);
-      background: var(--oh-white);
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .oh-pricing-nav {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.55rem;
-      margin: 1.8rem 0 2.3rem;
-    }
-
-    .oh-pricing-nav a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0.65rem 0.5rem;
-      border: 1px solid var(--oh-line);
-      border-radius: 8px;
-      color: var(--oh-text);
-      background: var(--oh-white);
-      text-align: center;
-      text-decoration: none;
-      font-size: 0.83rem;
-      font-weight: 700;
-      line-height: 1.45;
-    }
-
-    .oh-pricing-nav a:hover {
-      border-color: var(--oh-main);
-      color: var(--oh-main-dark);
-    }
-
     .oh-portfolio-link {
       margin: 0.75rem 0 0;
       text-align: center;
@@ -375,9 +334,6 @@
     }
 
     @media (max-width: 380px) {
-      .oh-pricing-nav {
-        grid-template-columns: 1fr;
-      }
     }
   
     /* スマートフォン表示用：Yahooニュース程度の可読性を目安に調整 */
@@ -399,24 +355,6 @@
       .oh-pricing__lead {
         font-size: 18px;
         line-height: 1.85;
-      }
-
-      .oh-pricing__tax {
-        font-size: 14px;
-        line-height: 1.5;
-      }
-
-      .oh-pricing-nav {
-        gap: 0.65rem;
-        margin-top: 1.65rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .oh-pricing-nav a {
-        min-height: 52px;
-        padding: 0.8rem 0.55rem;
-        font-size: 16px;
-        line-height: 1.45;
       }
 
       .oh-group {
@@ -615,14 +553,6 @@
     料金は、制作内容・掲載量・写真の有無・店舗数などによって変わります。
     下記は一般的なご依頼の目安です。ご相談後、作業を始める前に正式なお見積りをご案内します。
   </p>
-  <span class="oh-pricing__tax">表示価格は税込です</span>
-
-  <nav class="oh-pricing-nav" aria-label="料金メニュー">
-    <a href="#hearing">無料ヒアリング</a>
-    <a href="#pop-menu">POP・メニュー作成</a>
-    <a href="#analysis">数値分析</a>
-    <a href="#web-support">ウェブ対策</a>
-  </nav>
 
   <!-- 無料ヒアリング -->
   <section class="oh-group oh-group--free" id="hearing" aria-labelledby="hearingTitle">
