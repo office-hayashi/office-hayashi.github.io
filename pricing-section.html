@@ -20,19 +20,6 @@
     img {
       max-width: 100%;
     }
-  
-    @media (max-width: 390px) {
-      .oh-card {
-        grid-template-columns: 1fr;
-      }
-
-      .oh-card__price {
-        min-width: 0;
-        padding-top: 0;
-        text-align: left;
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -411,7 +398,7 @@
 
       .oh-pricing__lead {
         font-size: 18px;
-        line-height: 1.68;
+        line-height: 1.85;
       }
 
       .oh-pricing__tax {
@@ -426,8 +413,8 @@
       }
 
       .oh-pricing-nav a {
-        min-height: 46px;
-        padding: 0.68rem 0.55rem;
+        min-height: 52px;
+        padding: 0.8rem 0.55rem;
         font-size: 16px;
         line-height: 1.45;
       }
@@ -453,25 +440,22 @@
       }
 
       .oh-group__title-image {
-        width: 92%;
+        width: 100%;
         max-width: none;
         height: auto;
-        margin-left: auto;
-        margin-right: auto;
         border-radius: 12px;
       }
 
       .oh-group__intro {
         margin-top: 0.75rem;
         font-size: 18px;
-        line-height: 1.68;
+        line-height: 1.85;
       }
 
       .oh-card {
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 0.75rem 1rem;
-        align-items: start;
-        padding: 1.35rem 0;
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        padding: 1.45rem 0;
       }
 
       .oh-card__name {
@@ -482,14 +466,14 @@
 
       .oh-card__desc {
         font-size: 18px;
-        line-height: 1.68;
+        line-height: 1.85;
       }
 
       .oh-card__includes {
         margin-top: 0.75rem;
         padding-left: 1.35rem;
         font-size: 17px;
-        line-height: 1.68;
+        line-height: 1.85;
       }
 
       .oh-card__includes li + li {
@@ -497,12 +481,10 @@
       }
 
       .oh-card__price {
-        min-width: 7.4rem;
-        padding-top: 0.05rem;
-        text-align: right;
-        font-size: 20px;
-        line-height: 1.45;
-        white-space: nowrap;
+        min-width: 0;
+        text-align: left;
+        font-size: 21px;
+        line-height: 1.5;
       }
 
       .oh-card__price small {
@@ -516,15 +498,15 @@
       }
 
       .oh-cta-button {
-        min-height: 46px;
-        padding: 0.72rem 1.35rem;
+        min-height: 52px;
+        padding: 0.9rem 1.45rem;
         font-size: 16px;
         line-height: 1.45;
       }
 
       .oh-portfolio-link a {
-        min-height: 46px;
-        padding: 0.72rem 1.3rem;
+        min-height: 52px;
+        padding: 0.9rem 1.4rem;
         font-size: 16px;
         line-height: 1.45;
       }
@@ -532,7 +514,7 @@
       .oh-note {
         padding: 1.15rem;
         font-size: 16px;
-        line-height: 1.68;
+        line-height: 1.85;
       }
 
       .oh-final-cta {
@@ -547,11 +529,44 @@
 
       .oh-final-cta__text {
         font-size: 18px;
-        line-height: 1.68;
+        line-height: 1.8;
       }
     }
 
-  </style>
+  
+    /* スマートフォン：料金カードを1カラム化 */
+    @media (max-width: 560px) {
+      .oh-card {
+        display: block;
+        width: 100%;
+      }
+
+      .oh-card > div:first-child {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .oh-card__name,
+      .oh-card__desc,
+      .oh-card__includes {
+        width: 100%;
+        max-width: none;
+      }
+
+      .oh-card__price {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        text-align: left;
+      }
+
+      .oh-card__price small {
+        display: block;
+        margin-top: 0.15rem;
+      }
+    }
+
+</style>
 
   <p class="oh-pricing__eyebrow">PRICE</p>
   <h1 class="oh-pricing__title" id="ohPricingTitle">料金のめやす</h1>
