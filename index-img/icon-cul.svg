@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 176.79 153.95">
+  <!-- Generator: Adobe Illustrator 30.7.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 114)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect class="st0" x="16.36" y="99.69" width="26" height="47" rx="1.53" ry="1.53"/>
+  <rect class="st0" x="58.03" y="76.69" width="26" height="70" rx="1.53" ry="1.53"/>
+  <rect class="st0" x="99.69" y="91.69" width="26" height="55" rx="1.53" ry="1.53"/>
+  <rect class="st0" x="141.36" y="60.69" width="26" height="86" rx="1.53" ry="1.53"/>
+  <g>
+    <circle class="st0" cx="28.36" cy="70.69" r="10"/>
+    <circle class="st0" cx="70.36" cy="42.69" r="10"/>
+    <circle class="st0" cx="113.36" cy="60.69" r="10"/>
+    <circle class="st0" cx="156.36" cy="22.69" r="10"/>
+    <rect class="st0" x="47.33" y="32.28" width="6.38" height="47" rx="1.53" ry="1.53" transform="translate(66.89 -17.68) rotate(54.73)"/>
+    <rect class="st0" x="89" y="28.29" width="6.38" height="47" rx="1.53" ry="1.53" transform="translate(179.01 -8.57) rotate(115.86)"/>
+    <rect class="st0" x="132" y="18.29" width="6.38" height="47" rx="1.53" ry="1.53" transform="translate(74.9 -86.23) rotate(47.61)"/>
+  </g>
+</svg>

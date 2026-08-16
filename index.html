@@ -3,527 +3,553 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Office Hayashi</title>
+  <title>Office Hayashi｜飲食店の販促・ウェブ運営サポート</title>
+  <meta name="description" content="飲食店向けにPOP・メニュー作成、数値分析、ウェブ対策をお手伝いします。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #111111;
-      --white: #ffffff;
-      --gray-light: #f5f5f3;
-      --gray-mid: #e0e0dc;
-      --gray-text: #888880;
+      --orange: #ff6800;
+      --brown: #a94b22;
+      --green: #06a64f;
+      --blue: #252b88;
+      --black: #111;
+      --white: #fff;
+      --border: #222;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
 
     body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: var(--white);
+      margin: 0;
+      background: #fff;
       color: var(--black);
-      min-height: 100vh;
-      overflow-x: hidden;
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.6;
     }
 
-    /* ── HEADER ── */
-    header {
-      padding: 56px 60px 0;
-      opacity: 0;
-      transform: translateY(-16px);
-      animation: fadeUp 0.7s ease forwards 0.1s;
-    }
-
-    .logo img {
-      height: clamp(80px, 12vw, 140px);
-      width: auto;
+    img {
       display: block;
+      max-width: 100%;
+      height: auto;
     }
 
-    /* ── MAIN ── */
-    main {
-      padding: 64px 60px 80px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .profile-block {
-      display: flex;
-      align-items: flex-start;
-      gap: 52px;
-      max-width: 860px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.7s ease forwards 0.35s;
+    button {
+      font: inherit;
     }
 
-    .photo-wrap {
-      flex-shrink: 0;
-      width: clamp(130px, 18vw, 200px);
-      height: clamp(130px, 18vw, 200px);
-    }
-
-    .photo-wrap img {
+    .page {
       width: 100%;
-      height: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 14px 15px 0;
+    }
+
+    .hero__image {
+      width: 100%;
+    }
+
+    .pain-list {
+      margin: 0;
+      padding: 2px 18px 0 22px;
+      list-style-position: outside;
+      font-size: clamp(17px, 4.05vw, 21px);
+      font-weight: 900;
+      line-height: 1.46;
+      letter-spacing: -0.04em;
+    }
+
+    .pain-list li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .support-message {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      align-items: center;
+      gap: 17px;
+      padding: 39px 20px 0 21px;
+    }
+
+    .mini-profile {
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .mini-profile__photo {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 7px;
+      border-radius: 50%;
       object-fit: cover;
       object-position: center top;
-      display: block;
-      border-radius: 50%;
     }
 
-    .bio {
-      padding-top: 8px;
+    .mini-profile__brand {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
     }
 
-    .bio p {
-      font-size: clamp(13px, 1.6vw, 15px);
-      font-weight: 300;
-      line-height: 2.1;
-      color: #333;
-      letter-spacing: 0.03em;
+    .mini-profile__name {
+      margin-top: 2px;
+      font-size: 13px;
+      font-weight: 500;
     }
 
-    /* ── DIVIDER ── */
-    .divider {
-      width: 48px;
-      height: 1px;
-      background: var(--gray-mid);
-      margin: 52px 0 44px;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards 0.55s;
+    .support-message__headline {
+      margin: 0;
+      font-size: clamp(31px, 7.2vw, 39px);
+      line-height: 1.16;
+      letter-spacing: -0.08em;
+      font-weight: 900;
     }
 
-    /* ── CONTACT ICONS ── */
-    .contact-row {
-      display: flex;
-      align-items: flex-end;
-      gap: 32px;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards 0.7s;
+    .consult {
+      padding: 34px 32px 0;
     }
 
-    .contact-item {
-      display: flex;
-      flex-direction: column;
+    .consult__label {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: var(--black);
+      justify-content: center;
+      min-height: 43px;
+      padding: 2px 13px 5px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.08em;
+    }
+
+    .consult__text {
+      margin: 4px 0 4px;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 3px 13px 5px;
+      border: 1.8px solid var(--blue);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--blue);
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
       cursor: pointer;
     }
 
-    .contact-item:hover .icon-circle {
-      background: var(--black);
+    .service-list {
+      padding: 34px 32px 0;
     }
 
-    .contact-item:hover .icon-circle svg {
-      stroke: var(--white);
+    .service-card {
+      margin: 0 0 50px;
     }
 
-    .icon-circle {
-      width: 56px;
-      height: 56px;
+    .service-card + .service-card {
+      margin-top: 49px;
+    }
+
+    .service-card__image {
+      width: min(208px, 58vw);
+      margin-bottom: 7px;
+    }
+
+    .service-card__text {
+      margin: 0 0 10px;
+      font-size: clamp(17px, 3.8vw, 20px);
+      font-weight: 800;
+      line-height: 1.7;
+      letter-spacing: -0.02em;
+    }
+
+    .about-card {
+      margin: 22px 21px 24px;
+      padding: 23px 18px 26px;
+      border: 1.4px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .about-card__top {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 25px;
+    }
+
+    .about-card__photo {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto;
       border-radius: 50%;
-      border: 1.5px solid var(--gray-mid);
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .about-card__logo {
+      width: min(222px, 100%);
+    }
+
+    .about-card__text {
+      margin: 0 auto;
+      max-width: 405px;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.92;
+      letter-spacing: 0.015em;
+    }
+
+    .contact-icons {
       display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 42px;
+      margin-top: 24px;
+    }
+
+    .contact-icon {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.25s ease;
-      background: var(--white);
+      width: 58px;
+      height: 58px;
+      border: 0;
+      background: transparent;
+      color: #111;
+      cursor: pointer;
+      padding: 0;
     }
 
-    .icon-circle svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--black);
+    .contact-icon svg {
+      width: 54px;
+      height: 54px;
+      stroke: currentColor;
       fill: none;
-      stroke-width: 1.5;
+      stroke-width: 1.8;
       stroke-linecap: round;
       stroke-linejoin: round;
-      transition: stroke 0.25s ease;
     }
 
-    .contact-label {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: var(--gray-text);
-      text-transform: uppercase;
-    }
-
-    .contact-item.disabled {
-      opacity: 0.3;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    /* ── MODAL 共通 ── */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
-      z-index: 100;
+      z-index: 1000;
       align-items: center;
       justify-content: center;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 24px;
     }
 
     .modal-overlay.open {
       display: flex;
     }
 
+    .modal-box,
+    .mail-modal-box {
+      width: min(100%, 390px);
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 24px 26px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+    }
+
     .modal-box {
-      background: var(--white);
-      padding: 44px 48px;
-      max-width: 340px;
-      width: 90%;
       text-align: center;
-      animation: modalIn 0.25s ease;
     }
 
-    @keyframes modalIn {
-      from { transform: translateY(12px); opacity: 0; }
-      to   { transform: translateY(0);   opacity: 1; }
-    }
-
-    .modal-box p.modal-label {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      color: var(--gray-text);
+    .modal-label {
+      display: block;
+      margin: 0 0 14px;
+      color: #666;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-align: center;
       text-transform: uppercase;
-      margin-bottom: 12px;
     }
 
-    .modal-box .phone-number {
-      font-size: 28px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: var(--black);
-      margin-bottom: 32px;
+    .phone-number {
+      margin: 0 0 22px;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
     }
 
-    .modal-buttons {
+    .modal-buttons,
+    .mail-modal-buttons {
       display: flex;
-      gap: 12px;
+      gap: 10px;
+      margin-top: 22px;
     }
 
-    .btn-call {
-      flex: 1;
-      padding: 14px;
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-
-    .btn-call:hover { background: #333; }
-
+    .btn-call,
+    .btn-send,
     .btn-cancel {
       flex: 1;
-      padding: 14px;
-      background: transparent;
-      color: var(--black);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      border: 1.5px solid var(--gray-mid);
+      min-height: 44px;
+      border-radius: 8px;
+      border: 1.5px solid #222;
+      font-size: 14px;
+      font-weight: 800;
       cursor: pointer;
-      transition: border-color 0.2s;
     }
 
-    .btn-cancel:hover { border-color: #aaa; }
-
-    /* ── MAIL MODAL ── */
-    .mail-modal-box {
-      background: var(--white);
-      padding: 40px 40px 36px;
-      max-width: 380px;
-      width: 92%;
-      text-align: left;
-      animation: modalIn 0.25s ease;
+    .btn-call,
+    .btn-send {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      color: #fff;
     }
 
-    .mail-modal-box .modal-label {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      color: var(--gray-text);
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      display: block;
-      text-align: center;
+    .btn-cancel {
+      background: #fff;
+      color: #111;
+    }
+
+    .btn-send:disabled {
+      background: #aaa;
+      border-color: #aaa;
+      cursor: wait;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .form-group label {
       display: block;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      color: var(--gray-text);
-      text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
+      color: #555;
+      font-size: 12px;
+      font-weight: 800;
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      border: none;
-      border-bottom: 1px solid var(--gray-mid);
-      padding: 8px 0;
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--black);
-      background: transparent;
-      outline: none;
-      transition: border-color 0.2s;
-      resize: none;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-bottom-color: var(--black);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      font-family: inherit;
+      font-size: 16px;
+      line-height: 1.5;
     }
 
     .form-group textarea {
-      height: 80px;
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .send-success {
+      display: none;
+      text-align: center;
+    }
+
+    .send-success p {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
       line-height: 1.8;
     }
 
-    .mail-modal-buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 28px;
+    .success-icon {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 12px;
     }
 
-    .btn-send {
-      flex: 1;
-      padding: 14px;
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-send:hover { background: #333; }
-    .btn-send:disabled { background: var(--gray-mid); cursor: not-allowed; }
-
-    /* 送信完了メッセージ */
-    .send-success {
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    .send-success .success-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid var(--gray-mid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
-    }
-
-    .send-success .success-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--black);
+    .success-icon svg {
+      width: 42px;
+      height: 42px;
+      stroke: #111;
       fill: none;
-      stroke-width: 1.5;
+      stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
-    .send-success p {
-      font-size: 14px;
-      font-weight: 300;
-      color: #333;
-      line-height: 1.9;
-    }
-
-    .send-success .btn-cancel {
-      margin-top: 24px;
-      width: 100%;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      header { padding: 40px 28px 0; }
-      main   { padding: 48px 28px 64px; }
-
-      .profile-block {
-        flex-direction: column;
-        gap: 32px;
-        align-items: center;
+    @media (min-width: 760px) {
+      body {
+        background: #f4f4f2;
       }
 
-      .photo-wrap {
-        width: 140px;
-        height: 140px;
+      .page {
+        max-width: 560px;
+        min-height: 100vh;
+        box-shadow: 0 0 40px rgba(0,0,0,0.08);
       }
-
-      .bio { padding-top: 0; }
-      .bio p { font-size: 14px; }
-      .contact-row { gap: 20px; }
-      .icon-circle { width: 50px; height: 50px; }
-
-      .mail-modal-box { padding: 32px 28px 28px; }
     }
   </style>
 </head>
 <body>
+  <div class="page">
+    <header class="hero" aria-label="Office Hayashi メインビジュアル">
+      <img class="hero__image" src="index-img/img-main_top.png" alt="飲食店オーナー・店長のみなさま。時間がないとお悩みではありませんか。POP・メニュー作成、数値分析、ウェブ対策をお手伝いします。">
+    </header>
 
-  <header>
-    <div class="logo">
-      <img src="ロゴ.png" alt="Office Hayashi">
-    </div>
-  </header>
+    <main>
+      <ul class="pain-list">
+        <li>新作メニューを考えても、POPにする時間がない</li>
+        <li>数字は気になるけど、分析している暇がない</li>
+        <li>ウェブサイトの更新が後回しになっている</li>
+      </ul>
 
-  <main>
-    <div class="profile-block">
-      <div class="photo-wrap">
-        <img src="顔.png" alt="林功一">
-      </div>
-      <div class="bio">
-        <p>
-          チラシ・ポスター・看板など、販促物のデザインを承ります。<br>
-          ECサイト運営12年、飲食チェーンのインハウスデザイナーとして9年。<br>
-          飲食業界でのデザイン経験が長く、お店の繁盛に直結する販促物を一緒に考えます。<br>
-          パソコン・スマホ・ウェブ周りのお困りごともお気軽にご相談ください。
-        </p>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="contact-row">
-
-      <!-- メール -->
-      <div class="contact-item" onclick="openMailModal()" role="button" tabindex="0" aria-label="メールを送る">
-        <div class="icon-circle">
-          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      <section class="support-message" aria-label="Office Hayashiのサポート">
+        <div class="mini-profile">
+          <img class="mini-profile__photo" src="index-img/face.png" alt="林功一の顔写真">
+          <div class="mini-profile__brand">Office Hayashi</div>
+          <div class="mini-profile__name">林　功一</div>
         </div>
-        <span class="contact-label">Mail</span>
-      </div>
+        <h1 class="support-message__headline">そのお悩み、まとめて<br>お手伝いいたします</h1>
+      </section>
 
-      <!-- 電話 -->
-      <div class="contact-item" onclick="openPhoneModal()" role="button" tabindex="0" aria-label="電話をかける">
-        <div class="icon-circle">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 1 3.18 2 2 0 0 1 2.98 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <section class="consult" aria-label="初回相談">
+        <div class="consult__label">初回相談無料</div>
+        <p class="consult__text">まずはお気軽にご相談ください。</p>
+        <button class="btn" type="button" onclick="openMailModal()">まずは相談する</button>
+      </section>
+
+      <section class="service-list" aria-label="サービスメニュー">
+        <article class="service-card">
+          <img class="service-card__image" src="menu-pop.png" alt="POP・メニュー作成">
+          <p class="service-card__text">店内POP・店頭POP・単品訴求POP・誘導サイン・リーフレット・ポスター・メニュー制作</p>
+          <a class="btn" href="pricing-section.html#pop-menu">料金のめやすを見る</a>
+        </article>
+
+        <article class="service-card">
+          <img class="service-card__image" src="menu-analysis.png" alt="数値分析">
+          <p class="service-card__text">商品別の売上、出数、原価、粗利を一覧化し、売れ筋商品と利益商品の違いを見える化します。</p>
+          <a class="btn" href="pricing-section.html#analysis">料金のめやすを見る</a>
+        </article>
+
+        <article class="service-card">
+          <img class="service-card__image" src="menu-web.png" alt="ウェブ対策">
+          <p class="service-card__text">Google ビジネスプロフィールや店舗情報の更新を中心に、ネット集客の環境を整えます。</p>
+          <a class="btn" href="pricing-section.html#web-support">料金のめやすを見る</a>
+        </article>
+      </section>
+
+      <section class="about-card" aria-label="Office Hayashi 自己紹介">
+        <div class="about-card__top">
+          <img class="about-card__photo" src="index-img/face.png" alt="林功一の顔写真">
+          <img class="about-card__logo" src="index-img/logo.svg" alt="Office Hayashi">
         </div>
-        <span class="contact-label">Tel</span>
-      </div>
-
-      <!-- ポートフォリオ（準備中） -->
-      <div class="contact-item disabled" aria-label="実績抜粋（準備中）">
-        <div class="icon-circle">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+        <p class="about-card__text">飲食チェーンの販促・ウェブ運営を９年、<br>EC サイト運営 12 年の経験がございます。<br>お客様のお話しを丁寧にお伺いし、状況に合ったご提案を導き出します。</p>
+        <div class="contact-icons" aria-label="お問い合わせ">
+          <button class="contact-icon" type="button" onclick="openMailModal()" aria-label="メールで相談する">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 19h44v30H10z"/><path d="M10 19l22 18 22-18"/></svg>
+          </button>
+          <button class="contact-icon" type="button" onclick="openPhoneModal()" aria-label="電話で相談する">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M23.5 12c-4.2 1.6-7.5 5.7-7.5 10.5 0 14.6 11.9 26.5 26.5 26.5 4.8 0 8.9-3.3 10.5-7.5l-9-6.1-5.4 5.4c-7-2.2-12.2-7.4-14.4-14.4l5.4-5.4-6.1-9z"/><path d="M41 12c6 2 9 5 11 11"/><path d="M39 20c3 1 5 3 6 6"/></svg>
+          </button>
         </div>
-        <span class="contact-label">Portfolio</span>
-      </div>
+      </section>
+    </main>
+  </div>
 
-    </div>
-  </main>
-
-  <!-- 電話モーダル -->
   <div class="modal-overlay" id="phoneModal" onclick="closeOnOverlay(event, 'phoneModal')">
-    <div class="modal-box">
-      <p class="modal-label">Tel</p>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="phoneModalTitle">
+      <p class="modal-label" id="phoneModalTitle">Tel</p>
       <div class="phone-number">080-3459-5131</div>
       <div class="modal-buttons">
         <a class="btn-call" href="tel:08034595131">発信する</a>
-        <button class="btn-cancel" onclick="closePhoneModal()">キャンセル</button>
+        <button class="btn-cancel" type="button" onclick="closePhoneModal()">キャンセル</button>
       </div>
     </div>
   </div>
 
-  <!-- メールモーダル -->
   <div class="modal-overlay" id="mailModal" onclick="closeOnOverlay(event, 'mailModal')">
-    <div class="mail-modal-box">
-      <span class="modal-label">Mail</span>
-
-      <!-- フォーム -->
+    <div class="mail-modal-box" role="dialog" aria-modal="true" aria-labelledby="mailModalTitle">
+      <span class="modal-label" id="mailModalTitle">Mail</span>
       <div id="mailFormArea">
         <div class="form-group">
-          <label>お名前</label>
+          <label for="senderName">お名前</label>
           <input type="text" id="senderName" placeholder="山田 太郎" autocomplete="name">
         </div>
         <div class="form-group">
-          <label>メールアドレス</label>
+          <label for="senderEmail">メールアドレス</label>
           <input type="email" id="senderEmail" placeholder="example@email.com" autocomplete="email">
         </div>
         <div class="form-group">
-          <label>メッセージ</label>
+          <label for="senderMessage">メッセージ</label>
           <textarea id="senderMessage" placeholder="お問い合わせ内容をご記入ください"></textarea>
         </div>
         <div class="mail-modal-buttons">
-          <button class="btn-cancel" onclick="closeMailModal()">キャンセル</button>
-          <button class="btn-send" id="sendBtn" onclick="sendMail()">送信する</button>
+          <button class="btn-cancel" type="button" onclick="closeMailModal()">キャンセル</button>
+          <button class="btn-send" type="button" id="sendBtn" onclick="sendMail()">送信する</button>
         </div>
       </div>
-
-      <!-- 送信完了 -->
-      <div id="mailSuccessArea" class="send-success" style="display:none;">
+      <div id="mailSuccessArea" class="send-success">
         <div class="success-icon">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <p>メッセージを送信しました。<br>折り返しご連絡いたします。</p>
-        <button class="btn-cancel" onclick="closeMailModal()">閉じる</button>
+        <button class="btn-cancel" type="button" onclick="closeMailModal()">閉じる</button>
       </div>
-
     </div>
   </div>
 
   <script>
-    // ── 電話モーダル ──
     function openPhoneModal() {
       document.getElementById('phoneModal').classList.add('open');
     }
+
     function closePhoneModal() {
       document.getElementById('phoneModal').classList.remove('open');
     }
 
-    // ── メールモーダル ──
     function openMailModal() {
-      // フォームをリセット
       document.getElementById('senderName').value = '';
       document.getElementById('senderEmail').value = '';
       document.getElementById('senderMessage').value = '';
       document.getElementById('mailFormArea').style.display = 'block';
       document.getElementById('mailSuccessArea').style.display = 'none';
       document.getElementById('sendBtn').disabled = false;
+      document.getElementById('sendBtn').textContent = '送信する';
       document.getElementById('mailModal').classList.add('open');
     }
+
     function closeMailModal() {
       document.getElementById('mailModal').classList.remove('open');
     }
 
-    // ── 送信処理（Formspree） ──
     async function sendMail() {
-      const name    = document.getElementById('senderName').value.trim();
-      const email   = document.getElementById('senderEmail').value.trim();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
       const message = document.getElementById('senderMessage').value.trim();
 
       if (!name || !email || !message) {
@@ -557,7 +583,6 @@
       }
     }
 
-    // ── オーバーレイクリックで閉じる ──
     function closeOnOverlay(e, id) {
       if (e.target === document.getElementById(id)) {
         if (id === 'phoneModal') closePhoneModal();
@@ -565,14 +590,12 @@
       }
     }
 
-    // ── ESCキーで閉じる ──
-    document.addEventListener('keydown', e => {
+    document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closePhoneModal();
         closeMailModal();
       }
     });
   </script>
-
 </body>
 </html>
