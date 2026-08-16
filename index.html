@@ -67,25 +67,25 @@
 
     .pain-list {
       margin: 0;
-      padding: 2px 18px 0 22px;
+      padding: 4px 24px 0 32px;
       list-style-position: outside;
-      font-size: clamp(17px, 4.05vw, 21px);
+      font-size: clamp(16px, 3.9vw, 19px);
       font-weight: 900;
-      line-height: 1.46;
-      letter-spacing: -0.04em;
+      line-height: 1.55;
+      letter-spacing: -0.035em;
     }
 
     .pain-list li {
-      margin: 0;
+      margin: 0 0 2px;
       padding: 0;
     }
 
     .support-message {
       display: grid;
-      grid-template-columns: 92px 1fr;
+      grid-template-columns: 84px minmax(0, 1fr);
       align-items: center;
-      gap: 17px;
-      padding: 39px 20px 0 21px;
+      gap: 13px;
+      padding: 36px 20px 0 20px;
     }
 
     .mini-profile {
@@ -117,10 +117,44 @@
 
     .support-message__headline {
       margin: 0;
-      font-size: clamp(31px, 7.2vw, 39px);
-      line-height: 1.16;
-      letter-spacing: -0.08em;
+      font-size: clamp(26px, 6.8vw, 36px);
+      line-height: 1.18;
+      letter-spacing: -0.075em;
       font-weight: 900;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    .support-message__headline span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 374px) {
+      .support-message {
+        grid-template-columns: 76px minmax(0, 1fr);
+        gap: 11px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .mini-profile__photo {
+        width: 52px;
+        height: 52px;
+      }
+
+      .mini-profile__brand {
+        font-size: 14px;
+      }
+
+      .mini-profile__name {
+        font-size: 12px;
+      }
+
+      .support-message__headline {
+        font-size: 24px;
+        letter-spacing: -0.08em;
+      }
     }
 
     .consult {
@@ -434,7 +468,7 @@
           <div class="mini-profile__brand">Office Hayashi</div>
           <div class="mini-profile__name">林　功一</div>
         </div>
-        <h1 class="support-message__headline">そのお悩み、まとめて<br>お手伝いいたします</h1>
+        <h1 class="support-message__headline"><span>そのお悩み、まとめて</span><span>お手伝いいたします</span></h1>
       </section>
 
       <section class="consult" aria-label="初回相談">
